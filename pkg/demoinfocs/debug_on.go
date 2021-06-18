@@ -66,7 +66,7 @@ func debugGameEvent(d *msg.CSVCMsg_GameEventListDescriptorT, ge *msg.CSVCMsg_Gam
 
 func debugUnhandledMessage(cmd int, name string) {
 	if debugUnhandledMessages == yes {
-		fmt.Printf("UnhandledMessage: id=%d name=%s\n", cmd, name)
+		fmt.Printf("UnhandledMessage: id=%d Name=%s\n", cmd, name)
 	}
 }
 
