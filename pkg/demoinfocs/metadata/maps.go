@@ -26,13 +26,22 @@ func (m Map) TranslateScale(x, y float64) (float64, float64) {
 	return x / m.Scale, y / m.Scale
 }
 
+// MapNameToMap translates a map name to a Map.
+var MapNameToMap = make(map[string]Map)
+
 // makeMap creates a map stuct initialized with the given parameters.
 func makeMap(name string, x, y, scale float64) Map {
-	return Map{Name: name, PZero: r2.Point{X: x, Y: y}, Scale: scale}
+	m := Map{Name: name, PZero: r2.Point{X: x, Y: y}, Scale: scale}
+
+	MapNameToMap[name] = m
+
+	return m
 }
 
 // Pre-defined map translations.
+// see "steamapps/common/Counter-Strike Global Offensive/csgo/resource/overviews/*.txt"
 var (
+	MapDeAncient  = makeMap("de_ancient", -2953, 2164, 5)
 	MapDeCache    = makeMap("de_cache", -2000, 3250, 5.5)
 	MapDeCanals   = makeMap("de_canals", -2496, 1792, 4)
 	MapDeCbble    = makeMap("de_cbble", -3840, 3072, 6)
@@ -43,18 +52,6 @@ var (
 	MapDeOverpass = makeMap("de_overpass", -4831, 1781, 5.2)
 	MapDeTrain    = makeMap("de_train", -2477, 2392, 4.7)
 	MapDeVertigo  = makeMap("de_vertigo", -3168, 1762, 4)
+	MapCsAgency   = makeMap("cs_agency", -2947, 2492, 5)
+	MapCsOffice   = makeMap("cs_office", -1838, 1858, 4.1)
 )
-
-// MapNameToMap translates a map name to a Map.
-var MapNameToMap = map[string]Map{
-	"de_cache":    MapDeCache,
-	"de_canals":   MapDeCanals,
-	"de_cbble":    MapDeCbble,
-	"de_dust2":    MapDeDust2,
-	"de_inferno":  MapDeInferno,
-	"de_mirage":   MapDeMirage,
-	"de_nuke":     MapDeNuke,
-	"de_overpass": MapDeOverpass,
-	"de_train":    MapDeTrain,
-	"de_vertigo":  MapDeVertigo,
-}
