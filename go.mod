@@ -14,8 +14,5 @@ require (
 	github.com/stretchr/testify v1.7.0
 )
 
-replace github.com/dustin/go-heatmap => github.com/markus-wa/go-heatmap v1.0.0
-
-replace github.com/stretchr/testify => github.com/stretchr/testify v1.6.1
 
 go 1.11
